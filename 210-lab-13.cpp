@@ -10,7 +10,6 @@ using namespace std;
 int main() {
 	// Initializing vector and outputting address
 	vector<string> playlist;
-	cout << "Playlist created at address: " << playlist.data() << endl;
 
 	// Reading data from playlist.txt
 	cout << "Reading data from file... ";
@@ -18,15 +17,14 @@ int main() {
 	ifstream infile;
 	infile.open("playlist.txt");
 	if (infile.good()) {
-		// TODO: Refactor to use while loop
-		for (int i = 0; i < 30; i++) {
-			getline(infile, tempSong);
+		while (getline(infile, tempSong))
 			playlist.push_back(tempSong);
-		}
 		cout << "Done!" << endl;
 	} else
 		cout << "Error opening file" << endl;
 	infile.close();
+
+	cout << "Songs added to playlist at address: " << playlist.data() << endl;
 
 	// Outputting whether array is empty to see if items were added correctly
 	cout << "Checking if playlist is empty... " << boolalpha << playlist.empty() << endl;
@@ -67,7 +65,7 @@ int main() {
 		cout << " was not found" << endl;
 
 	// Creating a new playlist of the same length as original playlist
-	vector<string> paprikaPlaylist (playlist.size());
+	vector<string> paprikaPlaylist(playlist.size());
 	cout << "New playlist created at address: " << paprikaPlaylist.data() << endl;
 	// Filling new playlist with one value
 	fill(paprikaPlaylist.begin(), paprikaPlaylist.end(), "Paprika");
