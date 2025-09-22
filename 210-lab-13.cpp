@@ -18,9 +18,10 @@ int main() {
 	ifstream infile;
 	infile.open("playlist.txt");
 	if (infile.good()) {
-		for (int i = 0; i < PLAYLIST_SIZE; i++) {
+		// TODO: Refactor to use while loop
+		for (int i = 0; i < 30; i++) {
 			getline(infile, tempSong);
-			playlist[i] = tempSong;
+			playlist.push_back(tempSong);
 		}
 		cout << "Done!" << endl;
 	} else
@@ -57,7 +58,7 @@ int main() {
 
 	// Looking for specific song in playlist using iterator and find()
 	string target = "Dreams";
-	array<string, PLAYLIST_SIZE>::iterator it;
+	vector<string>::iterator it;
 	it = find(playlist.begin(), playlist.end(), target);
 	cout << endl << "The target song \"" << target;
 	if (it != playlist.end())
@@ -65,9 +66,10 @@ int main() {
 	else
 		cout << " was not found" << endl;
 
-	// Creating a new playlist filled with a specific song using fill()
-	array<string, PLAYLIST_SIZE> paprikaPlaylist;
+	// Creating a new playlist of the same length as original playlist
+	vector<string> paprikaPlaylist (playlist.size());
 	cout << "New playlist created at address: " << paprikaPlaylist.data() << endl;
+	// Filling new playlist with one value
 	fill(paprikaPlaylist.begin(), paprikaPlaylist.end(), "Paprika");
 
 	// Swapping the original playlist with the new playlist & outputting modified playlist
