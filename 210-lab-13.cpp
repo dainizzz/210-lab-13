@@ -8,7 +8,7 @@
 using namespace std;
 
 int main() {
-	// Initializing vector and outputting address
+	// Initializing vector
 	vector<string> playlist;
 
 	// Reading data from playlist.txt
@@ -24,15 +24,16 @@ int main() {
 		cout << "Error opening file" << endl;
 	infile.close();
 
-	cout << "Songs added to playlist at address: " << playlist.data() << endl;
-
-	// Outputting whether array is empty to see if items were added correctly
+	// Outputting whether vector is empty to see if items were added correctly
 	cout << "Checking if playlist is empty... " << boolalpha << playlist.empty() << endl;
 
-	// Outputting the size of the array
+	// Outputting address of vector
+	cout << "Songs added to playlist at address: " << playlist.data() << endl;
+
+	// Outputting the size of the vector
 	cout << "The number of songs in the playlist is: " << playlist.size() << endl;
 
-	// Outputting data from playlist array
+	// Outputting data from playlist vector
 	cout << "Playlist Contents:" << endl;
 	for (const auto &song: playlist)
 		cout << song << '\t';
